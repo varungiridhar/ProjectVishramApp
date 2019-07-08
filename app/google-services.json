@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "871886568974",
+    "firebase_url": "https://projectvishramdatabase.firebaseio.com",
+    "project_id": "projectvishramdatabase",
+    "storage_bucket": "projectvishramdatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871886568974:android:695903d369d6a6c2",
+        "android_client_info": {
+          "package_name": "com.example.projectvishramapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871886568974-917qlii3qk3sjnth2upqo5nakgdb476d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjo38d12mdowEsOxpCL4HZcOSqH_5XDsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871886568974-917qlii3qk3sjnth2upqo5nakgdb476d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
