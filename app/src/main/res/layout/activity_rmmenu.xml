@@ -6,8 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".RMMenuActivity">
+    tools:context=".RMMenuActivity"
+    android:background="#224E6D">
 
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recyclerv_view"
+       android:layout_width="match_parent"
+       android:layout_height="500dp"
+       android:layout_marginTop="50dp">
+
+   </androidx.recyclerview.widget.RecyclerView>
+
+   <TextView
+       android:id="@+id/textView2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="List of EUs"
+       android:textAppearance="@style/TextAppearance.AppCompat.Large"
+       android:textColor="#FFFFFF" />
 
 
 </RelativeLayout>

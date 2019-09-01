@@ -8,86 +8,31 @@
     android:background="#224E6D"
     tools:context=".RMSignupActivity">
 
-    <EditText
-        android:id="@+id/RMPasswordLogin"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/white_bg_bordered_edittext"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RMPhonenumSignup" />
-
-    <EditText
-        android:id="@+id/RMPhonenumSignup"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/white_bg_bordered_edittext"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RMEmailSignup" />
-
-    <EditText
-        android:id="@+id/RMEmailLogin"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="96dp"
-        android:background="@drawable/white_bg_bordered_edittext"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/RMSignupButton"
+        android:id="@+id/EUSignupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="228dp"
         android:background="@drawable/transparent_bg_bordered_button"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RMPasswordLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/RMPhoneNumberEditText" />
 
     <EditText
-        android:id="@+id/RMEmailSignup"
+        android:id="@+id/RMPhoneNumberEditText"
         android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginStart="52dp"
         android:layout_marginLeft="52dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="148dp"
         android:background="@drawable/white_bg_bordered_edittext"
         android:ems="10"
-        android:hint="Email-Address"
-        android:inputType="textEmailAddress"
+        android:hint="Phone number"
+        android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RMEmailLogin" />
-
-    <Button
-        android:id="@+id/RMLoginActivityButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/transparent_bg_bordered_button"
-        android:text="Log-in"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

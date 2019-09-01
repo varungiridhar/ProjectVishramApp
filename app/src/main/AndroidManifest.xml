@@ -5,8 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <application
         android:allowBackup="true"
@@ -15,11 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EUSignupActivity"></activity>
-        <activity android:name=".UberMenuActivity" />
+        <activity android:name=".AllOrdersActivity"></activity>
+        <activity android:name=".NewOrderActivity" />
+        <activity android:name=".MakeProfileActivity" />
+        <activity android:name=".EUSignupActivity" />
         <activity android:name=".RMSignupActivity" />
-        <activity android:name=".EULoginActivity" />
-        <activity android:name=".RMLoginActivity" />
         <activity android:name=".EUMenuActivity" />
         <activity android:name=".RMMenuActivity" />
         <activity android:name=".MainActivity">

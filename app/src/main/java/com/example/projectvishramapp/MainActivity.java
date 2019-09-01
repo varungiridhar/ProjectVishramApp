@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openRMMenuActivity(){
-        Intent intent = new Intent(this, RMMenuActivity.class);
+        Intent intent = new Intent(this, RMSignupActivity.class);
         startActivity(intent);
     }
 

@@ -6,47 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#224E6D"
-    tools:context=".EUSignupActivity">
+    tools:context=".RMSignupActivity">
 
     <EditText
-        android:id="@+id/EUPasswordLogin"
+        android:id="@+id/EUPhoneNumber"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginStart="52dp"
         android:layout_marginLeft="52dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/white_bg_bordered_edittext"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EUPhonenumSignup" />
-
-    <EditText
-        android:id="@+id/EUPhonenumSignup"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="316dp"
         android:background="@drawable/white_bg_bordered_edittext"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EUEmailSignup" />
-
-    <EditText
-        android:id="@+id/EUEmailLogin"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="96dp"
-        android:background="@drawable/white_bg_bordered_edittext"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,38 +28,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="84dp"
         android:background="@drawable/transparent_bg_bordered_button"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EUPasswordLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/EUPhoneNumber" />
 
-    <EditText
-        android:id="@+id/EUEmailSignup"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/white_bg_bordered_edittext"
-        android:ems="10"
-        android:hint="Email-Address"
-        android:inputType="textEmailAddress"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="242dp"
+        android:layout_height="248dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EUEmailLogin" />
-
-    <Button
-        android:id="@+id/EULoginActivityButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/transparent_bg_bordered_button"
-        android:text="log-in"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vishramlogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

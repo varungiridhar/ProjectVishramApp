@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "871886568974-br1ilb6eksvqct6ejcd40o1p3sc0ul1r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projectvishramapp",
+            "certificate_hash": "84c3b17cc0b4b81bd8e016ec862973b698b2544b"
+          }
+        },
+        {
           "client_id": "871886568974-917qlii3qk3sjnth2upqo5nakgdb476d.apps.googleusercontent.com",
           "client_type": 3
         }

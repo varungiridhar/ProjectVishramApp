@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -27,9 +28,11 @@ import java.util.ArrayList;
 public class RMMenuActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private TextView EUData;
-    private static final String TAG = "MainActivity";
-    private String rmname;
-    private String rmphonenumber;
+
+    private static final String TAG = "RMMenuActivity";
+    private ArrayList<String>  mPhoneNumbers = new ArrayList<>();
+
+
 
 
 
@@ -39,19 +42,29 @@ public class RMMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rmmenu);
 
         //calling the methods
+/*
         putDataInRMsAvaliable();
-        getEURequestsData();
+*/
+        getEUPhoneNumbers();
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+
+        Log.d(TAG, "onCreate: started");
+        initPhoneNumbers();
 
 
+        putInRMs();
 
+        Log.d(TAG, "onCreate: ");
 
 
 
     }
 
-    private void getEURequestsData(){
+    private void getEUPhoneNumbers(){
 
-        DatabaseReference euref = database.getInstance().getReference("EURequests").child("");//get EURequests
+        DatabaseReference euref = database.getInstance().getReference("EURequests").child("phoneNumber");//get EURequests
 
 
         euref.addValueEventListener(new ValueEventListener() {
@@ -59,7 +72,6 @@ public class RMMenuActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //this method is called initially and when the data in this child is updated
                 Log.d(TAG, "onDataChange: "+ dataSnapshot);
-                parseEURequests(dataSnapshot);
 
             }
 
@@ -71,7 +83,7 @@ public class RMMenuActivity extends AppCompatActivity {
 
     }
 
-    private void putDataInRMsAvaliable(){
+    /*private void putDataInRMsAvaliable(){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         String uid = currentFirebaseUser.getUid();
         Log.d(TAG, "putDataInRMsAvaliable: "+uid);
@@ -119,34 +131,80 @@ public class RMMenuActivity extends AppCompatActivity {
 
         //FUNCTION COMPLETED
 
+    }*/
+
+    private void initPhoneNumbers(){
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("users").child("EUs");
+
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //validation check for deleted values shoud occur.
+                //$When value is changed on database, the app crashes$
+                Log.d(TAG, "onDataChange: "+ dataSnapshot.getValue().toString());
+                addPhoneNumbers(dataSnapshot.getValue().toString());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+
+
     }
 
-    private void parseEURequests(DataSnapshot dataSnapshot){
+    private void addPhoneNumbers(String phoneListString) {
+        Log.d(TAG, "addPhoneNumbers:started ");
 
-        Object ds = dataSnapshot.getValue();
-        String dsString = ds.toString();
-        Log.d(TAG, "parseEURequests: "+ dsString);
-        dsString = dsString.replace("{", " ");
-        dsString = dsString.replace("}", " ");
-        dsString = dsString.replace(",", "");
-        String[] dsChildren= dsString.split("\\s");
-        for(int i = 0; i<dsChildren.length; i++){
-            Log.d(TAG, "parseEURequests: "+dsChildren[i]);
+        String[] phoneListArr = phoneListString.split(",");
+
+        for(int i = 0; i<phoneListArr.length; i++){
+            phoneListArr[i] = phoneListArr[i].replace("{", "");
+            String[] phoneNum = phoneListArr[i].split("=");
+            String phoneNumString = phoneNum[0];
+            Log.d(TAG, "addPhoneNumbers: "+ phoneNumString);
+            mPhoneNumbers.add(phoneNumString);
         }
 
 
 
 
+        initRecyclerView();
+
+    }
+
+    private void initRecyclerView(){
+        Log.d(TAG, "initRecyclerView: init recyclerview");
+        RecyclerView recyclerView = findViewById(R.id.recyclerv_view);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mPhoneNumbers, this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
 
+    private void putInRMs(){
+
+
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        String uid = currentFirebaseUser.getUid();
+
+        DatabaseReference RMsRef = database.getInstance().getReference();
+        String phoneNum = getIntent().getStringExtra("RMMenuActivityKey");
+
+
+        RMsRef.child("users").child("RMs").child(uid).child("phonenumber").setValue(phoneNum);
 
 
     }
 
-    private void showData(DataSnapshot dataSnapshot) {
 
-
-    }
 
 
 
