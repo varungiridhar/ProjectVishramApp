@@ -6,28 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".EUMenuActivity">
 
-    <Button
-        android:id="@+id/EUAssistanceButton"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="144dp"
-        android:background="@drawable/vishramlogo2"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="305dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="132dp"
-        android:background="#00F50707"
-        android:text="Click Button to get assistance"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EUAssistanceButton" />
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation_eu"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:id="@+id/bottom_navigation_eu"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_eu"
+        tools:layout_editor_absoluteX="0dp"
+        android:background="?android:attr/windowBackground"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

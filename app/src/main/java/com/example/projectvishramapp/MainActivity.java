@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openEUMenuActivity(){
-        Intent intent = new Intent(this, EUSignupActivity.class);
+        Intent intent = new Intent(this, EUMenuActivity.class);
         startActivity(intent);
     }
 

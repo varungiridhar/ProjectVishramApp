@@ -59,11 +59,13 @@ public class EUSignupActivity extends AppCompatActivity {
     private EditText EUPhoneNumber;
     private Button EUSignupButton;
     private String phonenumber;
-
+    private String euname;
+    private EditText EUName;
     private LinearLayout loadingProgress;
     private LinearLayout verifyLayout;
     private LinearLayout inputCodeLayout;
-
+    String phoneNum;
+    String euName;
 
 
 
@@ -78,7 +80,7 @@ public class EUSignupActivity extends AppCompatActivity {
 
         EUSignupButton = findViewById(R.id.EUSignupButton);
         EUPhoneNumber = findViewById(R.id.EUPhoneNumber);
-
+        EUName = findViewById(R.id.EUName);
 
 
 
@@ -146,6 +148,7 @@ public class EUSignupActivity extends AppCompatActivity {
     private void attemptLogin(){
         EUPhoneNumber.setError(null);
         phonenumber = EUPhoneNumber.getText().toString();
+        euname = EUName.getText().toString();
         boolean cancel = false;
         View focusView = null;
         if(!phoneNumberValid(phonenumber)){
@@ -192,11 +195,13 @@ public class EUSignupActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+
 
                             Intent i = new Intent(EUSignupActivity.this, EUMenuActivity.class);
                             i.putExtra("EUMenuActivityKey", phonenumber);
+                            Log.d(TAG, "onComplete: "+phonenumber);
                             startActivity(i);
+
 
 
                             // ...

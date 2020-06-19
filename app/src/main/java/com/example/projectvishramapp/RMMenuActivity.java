@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class RMMenuActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -31,7 +32,7 @@ public class RMMenuActivity extends AppCompatActivity {
 
     private static final String TAG = "RMMenuActivity";
     private ArrayList<String>  mPhoneNumbers = new ArrayList<>();
-
+    private String RMName;
 
 
 
@@ -156,8 +157,6 @@ public class RMMenuActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void addPhoneNumbers(String phoneListString) {
@@ -170,7 +169,14 @@ public class RMMenuActivity extends AppCompatActivity {
             String[] phoneNum = phoneListArr[i].split("=");
             String phoneNumString = phoneNum[0];
             Log.d(TAG, "addPhoneNumbers: "+ phoneNumString);
-            mPhoneNumbers.add(phoneNumString);
+
+            String phoneNumStringWithoutSpace = phoneNumString.replaceAll("\\s+", "");
+
+            if(phoneNumStringWithoutSpace.startsWith("+")){
+                mPhoneNumbers.add(phoneNumString);
+            }else{
+
+            }
         }
 
 
@@ -192,14 +198,16 @@ public class RMMenuActivity extends AppCompatActivity {
     private void putInRMs(){
 
 
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-        String uid = currentFirebaseUser.getUid();
+//        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+//        String uid = currentFirebaseUser.getUid();
+//
+//        DatabaseReference RMsRef = database.getInstance().getReference();
+//        String phoneNum = getIntent().getStringExtra("RMMenuActivityKey");
+//        RMName =  getIntent().getStringExtra("RMMenuActivityKeyName");
+//
+//        RMsRef.child("users").child("RMs").child(uid).child("phonenumber").setValue(phoneNum);
+//        RMsRef.child("users").child("RMs").child(uid).child("name").setValue(RMName);
 
-        DatabaseReference RMsRef = database.getInstance().getReference();
-        String phoneNum = getIntent().getStringExtra("RMMenuActivityKey");
-
-
-        RMsRef.child("users").child("RMs").child(uid).child("phonenumber").setValue(phoneNum);
 
 
     }

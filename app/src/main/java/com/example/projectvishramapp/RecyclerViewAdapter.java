@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import static androidx.core.content.ContextCompat.startActivity;
@@ -66,16 +68,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mPhoneNumbers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView phone_number;
         RelativeLayout parent_layout;
         TextView makeProfileButton;
+        TextView EUNameTextView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             phone_number = itemView.findViewById(R.id.phone_number);
             parent_layout = itemView.findViewById(R.id.parent_layout);
             makeProfileButton = itemView.findViewById(R.id.makeProfileButton);
+            EUNameTextView = itemView.findViewById(R.id.EUNameTextView);
+
 
         }
     }
@@ -92,6 +98,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Intent intent = new Intent(mcontext, MakeProfileActivity.class);
 
         intent.putExtra("key", phoneNum);
+        Log.d(TAG, "getMakeProfileActivity: "+phoneNum);
         mcontext.startActivity(intent);
     }
 

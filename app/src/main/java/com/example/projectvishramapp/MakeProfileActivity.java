@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class MakeProfileActivity extends AppCompatActivity {
     private Button sendButton;
     private ArrayList<String> mResult;
     private static final String TAG = "MakeProfileActivity";
-
+    String phoneNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,9 @@ public class MakeProfileActivity extends AppCompatActivity {
 
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
 
+        phoneNum = getIntent().getStringExtra("key");
+
+        Log.d(TAG, "onCreate: "+ phoneNum);
 
         mNewOrderCheck = findViewById(R.id.check_newOrder);
         mCompletedOrdersCheck = findViewById(R.id.check_completedOrders);
@@ -37,9 +41,15 @@ public class MakeProfileActivity extends AppCompatActivity {
         mNewOrderCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mNewOrderCheck.isChecked()){
+                if (mNewOrderCheck.isChecked()) {
                     mResult.add("newOrders");
-                }else{
+
+                    mCompletedOrdersCheck.setChecked(false);
+                    mPendingOrdersCheck.setChecked(false);
+                    mAllOrdersCheck.setChecked(false);
+
+
+                } else {
                     mResult.remove("newOrders");
                 }
             }
@@ -48,9 +58,13 @@ public class MakeProfileActivity extends AppCompatActivity {
         mCompletedOrdersCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mNewOrderCheck.isChecked()){
+                if (mCompletedOrdersCheck.isChecked()) {
                     mResult.add("completedOrders");
-                }else{
+
+                    mNewOrderCheck.setChecked(false);
+                    mPendingOrdersCheck.setChecked(false);
+                    mAllOrdersCheck.setChecked(false);
+                } else {
                     mResult.remove("completedOrders");
                 }
             }
@@ -59,9 +73,13 @@ public class MakeProfileActivity extends AppCompatActivity {
         mAllOrdersCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mNewOrderCheck.isChecked()){
+                if (mAllOrdersCheck.isChecked()) {
                     mResult.add("allOrders");
-                }else{
+
+                    mCompletedOrdersCheck.setChecked(false);
+                    mPendingOrdersCheck.setChecked(false);
+                    mNewOrderCheck.setChecked(false);
+                } else {
                     mResult.remove("allOrders");
                 }
             }
@@ -70,9 +88,13 @@ public class MakeProfileActivity extends AppCompatActivity {
         mPendingOrdersCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mNewOrderCheck.isChecked()){
+                if (mPendingOrdersCheck.isChecked()) {
                     mResult.add("pendingOrders");
-                }else{
+
+                    mCompletedOrdersCheck.setChecked(false);
+                    mNewOrderCheck.setChecked(false);
+                    mAllOrdersCheck.setChecked(false);
+                } else {
                     mResult.remove("pendingOrders");
                 }
             }
@@ -82,46 +104,54 @@ public class MakeProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String compareString = new String();
-                for (String s : mResult){
+                for (String s : mResult) {
                     compareString = s;
-                    Log.d(TAG, "onClick: "+ compareString);
-                    
-                    if(compareString.equals("newOrders")){
+
+                    if (compareString.equals("newOrders")) {
+
+
                         Intent intent = new Intent(MakeProfileActivity.this, NewOrderActivity.class);
-                        String phoneNum = getIntent().getStringExtra("key");
-                        intent.putExtra("newOrderKey", phoneNum);
+                        intent.putExtra("PHONENUMKEY", phoneNum);
                         startActivity(intent);
 
 
+                    } else {
+                        if (compareString.equals("completedOrders")) {
 
 
-                    }else{
-                        if(compareString.equals("newOrders")){
-                            Intent intent = new Intent(MakeProfileActivity.this, NewOrderActivity.class);
-                            String phoneNum = getIntent().getStringExtra("key");
-                            intent.putExtra("newOrderKey", phoneNum);
-                            startActivity(intent);
+                        } else {
+                            if (compareString.equals("allOrders")) {
+                                Intent intent = new Intent(MakeProfileActivity.this, NewOrderActivity.class);
+                                String phoneNum = getIntent().getStringExtra("key");
+                                intent.putExtra("", phoneNum);
+
+                                Log.d(TAG, "onClick: allOrders");
 
 
+                            } else {
+                                if (compareString.equals("pendingOrders")) {
+                                    Intent intent = new Intent(MakeProfileActivity.this, NewOrderActivity.class);
+                                    String phoneNum = getIntent().getStringExtra("key");
+                                    intent.putExtra("", phoneNum);
+                                    startActivity(intent);
+
+                                    Log.d(TAG, "onClick: pendingOrders");
 
 
+                                }
+                            }
                         }
                     }
-
-                    //all compare statements here:
-
-
-
-
-
-
-
-
-
-
                 }
 
+                //all compare statements here:
+
+
             }
+
         });
+    }
+    private void intentFunction_NewOrderActivity(){
+
     }
 }

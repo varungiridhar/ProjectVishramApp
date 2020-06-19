@@ -47,11 +47,13 @@ public class RMSignupActivity extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String phonenumber;
-
+    private String RMname;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     private Button RMSignupButton;
-    private EditText RMPhoneNumber;
+    private EditText RMNameEditText;
+    private EditText RMPhoneNumberEditText;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
@@ -64,8 +66,8 @@ public class RMSignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rmsignup);
 
         mAuth = FirebaseAuth.getInstance();
-
-        RMPhoneNumber = findViewById(R.id.RMPhoneNumberEditText);
+        RMNameEditText = findViewById(R.id.RMNameEditText);
+        RMPhoneNumberEditText = findViewById(R.id.RMPhoneNumberEditText);
         RMSignupButton = findViewById(R.id.EUSignupButton);
 
 
@@ -129,12 +131,14 @@ public class RMSignupActivity extends AppCompatActivity {
     }
 
     private void attemptLogin(){
-        RMPhoneNumber.setError(null);
-        phonenumber = RMPhoneNumber.getText().toString();
+        RMPhoneNumberEditText.setError(null);
+        RMNameEditText.setError(null);
+        phonenumber = RMPhoneNumberEditText.getText().toString();
+        RMname = RMNameEditText.getText().toString();
         boolean cancel = false;
         View focusView = null;
         if(!phoneNumberValid(phonenumber)){
-            focusView = RMPhoneNumber;
+            focusView = RMPhoneNumberEditText;
             cancel = true;
         }
 
@@ -194,6 +198,7 @@ public class RMSignupActivity extends AppCompatActivity {
     private void sendIntent(){
         Intent e = new Intent(RMSignupActivity.this, RMMenuActivity.class);
         e.putExtra("RMMenuActivityKey", phonenumber);
+        e.putExtra("RMMenuActivityKeyName", RMname);
         startActivity(e);
     }
 
